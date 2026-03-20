@@ -28,7 +28,7 @@ export default function LoginPage() {
     }
 
     setIsLoading(true)
-    console.log("[v0] Starting simple login process for:", phoneNumber)
+    console.log(" Starting simple login process for:", phoneNumber)
 
     try {
       // Simple validation - just check if fields are filled
@@ -39,14 +39,14 @@ export default function LoginPage() {
         sessionStorage.setItem("farmerCardNumber", farmerCardNumber)
         sessionStorage.setItem("language", language)
 
-        console.log("[v0] Login successful, redirecting to dashboard")
+        console.log(" Login successful, redirecting to dashboard")
         // Use window.location for reliable navigation
         window.location.href = "/dashboard"
       } else {
         throw new Error("Invalid credentials")
       }
     } catch (error) {
-      console.log("[v0] Login error:", error)
+      console.log(" Login error:", error)
       setIsLoading(false)
       alert(
         language === "en"

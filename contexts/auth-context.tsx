@@ -28,7 +28,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           const phone = sessionStorage.getItem("phoneNumber")
           const card = sessionStorage.getItem("farmerCardNumber")
 
-          console.log("[v0] Auth context check - isLoggedIn:", isLoggedIn, "phone:", phone)
+          console.log(" Auth context check - isLoggedIn:", isLoggedIn, "phone:", phone)
 
           if (isLoggedIn === "true" && phone && card) {
             setIsAuthenticated(true)
@@ -40,7 +40,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             setFarmerCardNumber(null)
           }
         } catch (error) {
-          console.log("[v0] Auth context error:", error)
+          console.log(" Auth context error:", error)
           setIsAuthenticated(false)
           setPhoneNumber(null)
           setFarmerCardNumber(null)
@@ -63,9 +63,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setPhoneNumber(phone)
       setFarmerCardNumber(card)
 
-      console.log("[v0] Auth context login successful")
+      console.log(" Auth context login successful")
     } catch (error) {
-      console.log("[v0] Auth context login error:", error)
+      console.log(" Auth context login error:", error)
     }
   }
 
@@ -81,9 +81,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setPhoneNumber(null)
       setFarmerCardNumber(null)
 
-      console.log("[v0] Auth context logout successful")
+      console.log(" Auth context logout successful")
     } catch (error) {
-      console.log("[v0] Auth context logout error:", error)
+      console.log(" Auth context logout error:", error)
     }
   }
 

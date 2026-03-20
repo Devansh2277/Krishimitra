@@ -34,7 +34,7 @@ export default function VoiceAssistant() {
       const savedLanguage = sessionStorage.getItem("language")
 
       console.log(
-        "[v0] Checking authentication - loggedIn:",
+        " Checking authentication - loggedIn:",
         loggedIn,
         "phoneNumber:",
         sessionStorage.getItem("phoneNumber"),
@@ -45,9 +45,9 @@ export default function VoiceAssistant() {
         if (savedLanguage) {
           setLanguage(savedLanguage)
         }
-        console.log("[v0] User authenticated successfully")
+        console.log(" User authenticated successfully")
       } else {
-        console.log("[v0] Voice assistant not authenticated, redirecting")
+        console.log(" Voice assistant not authenticated, redirecting")
         window.location.href = "/"
         return
       }
@@ -148,7 +148,7 @@ export default function VoiceAssistant() {
     navigator.mediaDevices
       .getUserMedia({ audio: true })
       .then(() => {
-        console.log("[v0] Microphone permission granted")
+        console.log(" Microphone permission granted")
 
         const SpeechRecognition = (window as any).webkitSpeechRecognition || (window as any).SpeechRecognition
         const recognition = new SpeechRecognition()
@@ -160,7 +160,7 @@ export default function VoiceAssistant() {
         recognition.maxAlternatives = 1
 
         recognition.onstart = () => {
-          console.log("[v0] Voice recognition started")
+          console.log(" Voice recognition started")
           setIsListening(true)
           setCurrentTranscript("")
         }
@@ -173,13 +173,13 @@ export default function VoiceAssistant() {
           setCurrentTranscript(transcript)
 
           if (event.results[event.results.length - 1].isFinal) {
-            console.log("[v0] Voice input received:", transcript)
+            console.log(" Voice input received:", transcript)
             handleVoiceInput(transcript)
           }
         }
 
         recognition.onerror = (event: any) => {
-          console.log("[v0] Voice recognition error:", event.error)
+          console.log(" Voice recognition error:", event.error)
           setIsListening(false)
           setCurrentTranscript("")
 
@@ -201,7 +201,7 @@ export default function VoiceAssistant() {
         }
 
         recognition.onend = () => {
-          console.log("[v0] Voice recognition ended")
+          console.log(" Voice recognition ended")
           setIsListening(false)
           setCurrentTranscript("")
         }
@@ -209,7 +209,7 @@ export default function VoiceAssistant() {
         recognition.start()
       })
       .catch((error) => {
-        console.log("[v0] Microphone permission error:", error)
+        console.log(" Microphone permission error:", error)
         alert(t.micPermissionDenied)
       })
   }
@@ -327,17 +327,17 @@ export default function VoiceAssistant() {
 
       utterance.onstart = () => {
         setIsSpeaking(true)
-        console.log("[v0] Speech synthesis started")
+        console.log(" Speech synthesis started")
       }
 
       utterance.onend = () => {
         setIsSpeaking(false)
-        console.log("[v0] Speech synthesis ended")
+        console.log(" Speech synthesis ended")
       }
 
       utterance.onerror = (event) => {
         setIsSpeaking(false)
-        console.log("[v0] Speech synthesis error:", event.error)
+        console.log(" Speech synthesis error:", event.error)
       }
 
       synthRef.current.speak(utterance)

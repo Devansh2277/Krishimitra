@@ -88,7 +88,7 @@ export default function Dashboard() {
       const phoneNumber = sessionStorage.getItem("phoneNumber")
       const savedLanguage = sessionStorage.getItem("language")
 
-      console.log("[v0] Checking authentication - loggedIn:", loggedIn, "phoneNumber:", phoneNumber)
+      console.log(" Checking authentication - loggedIn:", loggedIn, "phoneNumber:", phoneNumber)
 
       if (loggedIn === "true" && phoneNumber) {
         setIsAuthenticated(true)
@@ -96,9 +96,9 @@ export default function Dashboard() {
         if (savedLanguage) {
           setLanguage(savedLanguage)
         }
-        console.log("[v0] User authenticated successfully")
+        console.log(" User authenticated successfully")
       } else {
-        console.log("[v0] User not authenticated, redirecting to login")
+        console.log(" User not authenticated, redirecting to login")
         window.location.href = "/"
         return
       }
@@ -125,7 +125,7 @@ export default function Dashboard() {
             generateCropAdvice(parsedProfile.cropHistory)
           }
         } catch (error) {
-          console.log("[v0] Error parsing saved profile:", error)
+          console.log(" Error parsing saved profile:", error)
         }
       }
     }
@@ -252,7 +252,7 @@ export default function Dashboard() {
               }
             }
           } catch (error) {
-            console.log("[v0] Reverse geocoding failed, using default location")
+            console.log(" Reverse geocoding failed, using default location")
             setLocationName("Punjab, India")
             setProfile((prev) => ({ ...prev, location: "Punjab, India" }))
           }
@@ -319,7 +319,7 @@ export default function Dashboard() {
   const handleLogout = () => {
     sessionStorage.clear()
     localStorage.removeItem("farmerProfile")
-    console.log("[v0] User logged out")
+    console.log(" User logged out")
     window.location.href = "/"
   }
 
@@ -353,7 +353,7 @@ export default function Dashboard() {
   }
 
   const handleVoiceInput = () => {
-    console.log("[v0] Opening voice assistant page")
+    console.log(" Opening voice assistant page")
     window.open("/voice-assistant", "_blank")
   }
 
